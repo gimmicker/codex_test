@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cat & Ball Playground</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Parallax background layers -->
+  <div class="layer back"></div>
+  <div class="layer mid"></div>
+
+  <!-- Heads-up display -->
+  <div id="hud">
+    <span id="score">Score: 0</span>
+    <span id="status"></span>
+  </div>
+
+  <div id="game">
+    <!-- Cat character -->
+    <div id="cat" aria-label="고양이">
+      <div class="ear left"></div>
+      <div class="ear right"></div>
+      <div class="face">
+        <div class="eye left"><div class="pupil"></div></div>
+        <div class="eye right"><div class="pupil"></div></div>
+        <div class="paw left"></div>
+        <div class="paw right"></div>
+      </div>
+    </div>
+
+    <!-- Bouncing ball -->
+    <div id="ball" aria-label="공" tabindex="0"></div>
+
+    <!-- Particle container -->
+    <div id="particles"></div>
+  </div>
+
+  <!-- Mobile controls -->
+  <div id="mobile-controls" aria-label="모바일 컨트롤">
+    <button id="btn-left" aria-label="왼쪽">◀</button>
+    <button id="btn-jump" aria-label="점프">▲</button>
+    <button id="btn-right" aria-label="오른쪽">▶</button>
+  </div>
+
+  <!-- jQuery & Game script -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
