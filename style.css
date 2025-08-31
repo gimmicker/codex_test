@@ -1,0 +1,168 @@
+/* Basic layout */
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:radial-gradient(#222,#000);
+  color:#fff;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Parallax layers */
+.layer{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  pointer-events:none;
+  background-repeat:repeat;
+  will-change:transform;
+}
+.layer.back{
+  background-image:radial-gradient(#fff 1px,transparent 2px);
+  background-size:50px 50px;
+  opacity:0.2;
+  z-index:1;
+}
+.layer.mid{
+  background-image:radial-gradient(#fff 1px,transparent 1px);
+  background-size:30px 30px;
+  opacity:0.1;
+  z-index:2;
+}
+
+/* HUD */
+#hud{
+  position:fixed;
+  top:10px;left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:20px;
+  font-size:18px;
+  z-index:1000;
+  text-shadow:0 0 5px #000;
+}
+
+/* Game area */
+#game{
+  position:relative;
+  width:100vw; height:100vh;
+  overflow:hidden;
+  z-index:5;
+}
+
+/* Ball */
+#ball{
+  position:absolute;
+  width:60px;height:60px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,#fff,#f00);
+  box-shadow:0 0 10px rgba(255,0,0,0.5);
+  cursor:grab;
+  z-index:6;
+}
+#ball:active{cursor:grabbing;}
+
+/* Particle effects */
+#particles{
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;
+  pointer-events:none;
+  z-index:4;
+}
+.particle{
+  position:absolute;
+  background:radial-gradient(#fff,rgba(255,255,255,0));
+  border-radius:50%;
+  animation:particle 1s linear forwards;
+}
+@keyframes particle{
+  from{transform:translate(-50%,-50%) scale(1);opacity:1;}
+  to{transform:translate(-50%,-50%) scale(2);opacity:0;}
+}
+
+/* Cat figure */
+#cat{
+  position:absolute;
+  bottom:20px;left:50%;
+  transform:translateX(-50%);
+  width:120px;height:100px;
+  z-index:5;
+}
+#cat .face{
+  position:relative;
+  width:100%;height:100%;
+  background:#ffcc99;
+  border-radius:50% 50% 40% 40%;
+  box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+#cat .ear{
+  position:absolute;
+  top:-20px;
+  width:40px;height:40px;
+  background:#ffcc99;
+  border-radius:40% 40% 0 0;
+  transform:rotate(45deg);
+}
+#cat .ear.left{left:10px;}
+#cat .ear.right{right:10px;}
+#cat .eye{
+  position:absolute;
+  top:30px;
+  width:25px;height:25px;
+  background:#fff;
+  border-radius:50%;
+  overflow:hidden;
+}
+#cat .eye.left{left:30px;}
+#cat .eye.right{right:30px;}
+#cat .pupil{
+  position:absolute;
+  width:15px;height:15px;
+  background:#000;
+  border-radius:50%;
+  top:5px;left:5px;
+  transition:transform 0.1s;
+}
+#cat .paw{
+  position:absolute;
+  bottom:-10px;
+  width:40px;height:30px;
+  background:#ffcc99;
+  border-radius:20px;
+}
+#cat .paw.left{left:20px;}
+#cat .paw.right{right:20px;transform-origin:top left;}
+#cat.hit .paw.right{animation:paw 0.3s forwards;}
+@keyframes paw{
+  0%{transform:rotate(0deg);}
+  50%{transform:rotate(-40deg) translate(-10px,0);}
+  100%{transform:rotate(0deg);}
+}
+
+/* Mobile controls */
+#mobile-controls{
+  position:fixed;
+  bottom:10px;left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:20px;
+  z-index:1000;
+}
+#mobile-controls button{
+  width:60px;height:60px;
+  border:none;
+  border-radius:50%;
+  background:#444;
+  color:#fff;
+  font-size:24px;
+  opacity:0.8;
+}
+#mobile-controls button:focus{outline:2px solid #fff;}
+@media (min-width:600px){#mobile-controls{display:none;}}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important;transition:none !important;}
+}
